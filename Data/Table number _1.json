@@ -1,0 +1,18 @@
+{
+    "TimeStart": "2021-08-19T09:16:14.2565639+07:00",
+    "TimeEnd": "2021-08-19T09:16:34.2848159+07:00",
+    "listOrderRes": null,
+    "order": {
+        "IdTable": 1,
+        "Status": true,
+        "Dishs": [
+            {
+                "name": "cafe",
+                "price": 20000.0,
+                "number": 2
+            }
+        ],
+        "Total": 40000.0
+    },
+    "listTable": null
+}
