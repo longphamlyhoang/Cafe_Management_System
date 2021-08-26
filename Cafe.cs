@@ -14,7 +14,7 @@ namespace Cafe_Management_System
             {
                 Console.WriteLine("=====MENU=====");
                 Console.WriteLine("1.Đặt bàn");
-                Console.WriteLine("2.Gọi đồ ăn");
+                Console.WriteLine("2.Gọi thêm đồ ăn");
                 Console.WriteLine("3.show hóa đơn");
                 Console.WriteLine("4.show các bàn");
                 Console.WriteLine("5.Tính tiền");
@@ -53,16 +53,17 @@ namespace Cafe_Management_System
                             Console.WriteLine("Nhập id bàn:");
                             int idTable = Int32.Parse(Console.ReadLine());
 
-                            Console.WriteLine("Nhập món ăn: ");
-                            string name = Console.ReadLine();
+                            Console.WriteLine("Nhập đồ uống: ");
+                            string namedish = Console.ReadLine();
 
-                            Console.WriteLine("Số lượng món ăn: ");
-                            int number = Int32.Parse(Console.ReadLine());
+                            Console.WriteLine("Số lượng đồ uống: ");
+                            int numberdish = Int32.Parse(Console.ReadLine());
 
                             Order order = new Order();
-                            order = helper.AddOrder(idTable, name, number);
+                            order = helper.AddOrder(idTable, namedish, numberdish);
 
                             listOrder.Add(order);
+                            Console.WriteLine("");
                             break;
 
                         }
@@ -72,31 +73,31 @@ namespace Cafe_Management_System
                             int idTable = Int32.Parse(Console.ReadLine());
 
                             Console.WriteLine("Nhập món ăn: ");
-                            string name = Console.ReadLine();
+                            string namedish = Console.ReadLine();
 
                             Console.WriteLine("Nhập số lượng món ăn: ");
-                            int number = Int32.Parse(Console.ReadLine());
+                            int numberdish = Int32.Parse(Console.ReadLine());
 
                             bool check = false;
 
                             // check ton tai id table
-                            foreach (var or in listOrder)
+                            foreach (var order in listOrder)
                             {
-                                if (idTable == or.IdTable)
+                                if (idTable == order.IdTable)
                                 {
 
-                                    foreach (var dis in or.Dishs)
+                                    foreach (var dis in order.Dishs)
                                     {
-                                        if (name == dis.name)
+                                        if (namedish == dis.name)
                                         {
-                                            dis.number += number;
+                                            dis.number += numberdish;
                                             check = true; ;
                                         }
                                     }
 
                                     if (check == false)
                                     {
-                                        helper.UpDateOrder(or, name, number);
+                                        helper.UpDateOrder(order, namedish, numberdish);
                                     }
                                 }
                             }
@@ -104,11 +105,12 @@ namespace Cafe_Management_System
                         }
                     case 3:
                         {
-                            helper.Print(listOrder);
+                            helper.PrintBuild();
                             break;
                         }
                     case 4:
                         {
+                            helper.Print(listOrder);
                             break;
                         }
                     case 5:

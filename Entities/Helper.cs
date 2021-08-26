@@ -41,33 +41,33 @@ namespace Cafe_Management_System.Ultilities
             }
         }
 
-        public Order AddOrder(int idTable, string name, int number)
+        public Order AddOrder(int idTable, string namedish, int numberdish)
         {
             List<Dish> listDistOrder = new List<Dish>();
             // Lay gia tien tu mon an
             double price = 0;
             foreach (var dish in ListDish)
             {
-                if (name == dish.name)
+                if (namedish == dish.name)
                 {
                     price = dish.price;
                 }
             }
 
             Dish dishRes = new Dish();
-            dishRes.name = name;
+            dishRes.name = namedish;
             dishRes.price = price;
-            dishRes.number = number;
+            dishRes.number = numberdish;
 
             listDistOrder.Add(dishRes);
 
-            Order or = new Order();
+            Order order = new Order();
 
-            or.IdTable = idTable;
-            or.Status = true;
-            or.Dishs = listDistOrder;
+            order.IdTable = idTable;
+            order.Status = true;
+            order.Dishs = listDistOrder;
 
-            return or;
+            return order;
         }
         public void BillOrder(Order order, DateTime timeOder)
         {
@@ -82,7 +82,7 @@ namespace Cafe_Management_System.Ultilities
                 sw.WriteLine(JsonConvert.SerializeObject(response));
             }
         }
-        public Order UpDateOrder(Order or, string name, int number)
+        public Order UpDateOrder(Order order, string name, int number)
         {
             double price = 0;
             foreach (var dish in ListDish)
@@ -98,9 +98,19 @@ namespace Cafe_Management_System.Ultilities
             dis.number = number;
             dis.price = price;
 
-            or.Dishs.Add(dis);
+            order.Dishs.Add(dis);
 
-            return or;
+            return order;
+        }
+
+        public void PrintBuild()
+        {
+            List<Table> listTable = ListTable;
+            foreach (var table in listTable)
+            {
+                table.ViewInfo();
+            }
+
         }
 
         public void Print(List<Order> listOrder)
@@ -117,8 +127,6 @@ namespace Cafe_Management_System.Ultilities
                     }
                 }
             }
-
-
             ResponseTable responseTable = new ResponseTable();
             responseTable.listTable = listTable;
 

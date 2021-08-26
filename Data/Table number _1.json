@@ -1,1 +1,1 @@
-{"TimeStart":"2021-08-23T10:02:04.4930468+07:00","TimeEnd":"2021-08-23T10:02:19.6458705+07:00","listOrderRes":null,"order":{"IdTable":1,"Status":true,"Dishs":[{"name":"cafe","price":20000.0,"number":4}],"Total":80000.0},"listTable":null}
+{"TimeStart":"2021-08-27T02:52:38.0269459+07:00","TimeEnd":"2021-08-27T02:54:25.487334+07:00","listOrderRes":null,"order":{"IdTable":1,"Status":true,"Dishs":[{"name":"coca","price":15000.0,"number":2},{"name":"bohuc","price":15000.0,"number":2}],"Total":60000.0},"listTable":null}

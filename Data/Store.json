@@ -5,15 +5,15 @@
             "price": 20000
         },
         {
-            "name": "banh mi",
+            "name": "bohuc",
             "price": 15000
         },
         {
-            "name": "tra sua",
-            "price": 30000
+            "name": "coca",
+            "price": 15000
         },
         {
-            "name": "trai cay",
+            "name": "nuocep",
             "price": 25000
         }
     ],
@@ -32,6 +32,10 @@
         },
         {
             "id": 4,
+            "status": false
+        },
+        {
+            "id": 5,
             "status": false
         }
     ]
