@@ -6,10 +6,10 @@ namespace Cafe_Management_System
     {
         const int min = 1;
         const int max = 3;
-        const int dangnhap = 1;
-        const int dangky = 2;
+        const int Login = 1;
+        const int Register = 2;
         const int Exit = 3;
-        public static void Buildmenu(out int option)
+        public static void BuildMenu(out int option)
         {
             do
             {
@@ -32,13 +32,13 @@ namespace Cafe_Management_System
             var selected = 0;
             do
             {
-                Buildmenu(out selected);
+                BuildMenu(out selected);
                 Console.Clear();
                 switch (selected)
                 {
-                    case dangnhap:
+                    case Login:
                         {
-                            bool check = User.DangNhap(user);
+                            bool check = User.Login(user);
                             if (check)
                             {
                                 Cafe cafe = new Cafe();
@@ -47,14 +47,13 @@ namespace Cafe_Management_System
                             }
                             break;
                         }
-                    case dangky:
+                    case Register:
                         {
-                            User.DangKy(user);
+                            User.Register(user);
                             Cafe cafe = new Cafe();
                             cafe.Process2();
                             break;
                         }
-
                     case Exit:
                         {
                             Environment.Exit(0);

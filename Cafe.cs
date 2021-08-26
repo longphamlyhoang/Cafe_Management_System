@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Cafe_Management_System.Ultilities;
 namespace Cafe_Management_System
@@ -130,13 +129,14 @@ namespace Cafe_Management_System
                         }
                     case 6:
                         {
-                            Environment.Exit(0);
+                            Cafe_Management_System.BuildMenu1.BuildMenu(out selected);
+                            BuildMenu1.Process1();
                             break;
                         }
                     default:
                         break;
                 }
-            } while (selected != 6);
+            } while (selected != max);
         }
     }
 }

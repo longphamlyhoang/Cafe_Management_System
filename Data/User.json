@@ -1,14 +1,1 @@
-[
-    {
-        "UserName": "long",
-        "MatKhau": "long"
-    },
-    {
-        "UserName": "nam",
-        "MatKhau": "nam"
-    },
-    {
-        "UserName": "hung",
-        "MatKhau": "hung"
-    }
-]
+[{"UserName":"long","MatKhau":"long"},{"UserName":"nam","MatKhau":"nam"},{"UserName":"hung","MatKhau":"hung"},{"UserName":"nguyen","MatKhau":"Asdf1234!"},{"UserName":"duy123","MatKhau":"Duy123@f"},{"UserName":"duy1234","MatKhau":"Duy!726"}]

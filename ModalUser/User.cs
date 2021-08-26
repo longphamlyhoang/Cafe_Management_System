@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 
@@ -34,47 +33,43 @@ namespace Cafe_Management_System
         }
         public static bool Checkusername(string name)
         {
-            return Regex.IsMatch(name, "^[a-zA-Z0-9_]{6,16}$");
+            return Regex.IsMatch(name, "^[a-zA-Z0-9_]{0,9}$");
         }
-        public static bool CheckPassword(string mk)
+        public static bool CheckPassword(string password)
         {
-            return Regex.IsMatch(mk, @"((?=.*\d)(?=.*[a-z]).*[A-Z])(?=.*[!@#$%^&]).{6,20}");
+            return Regex.IsMatch(password, @"((?=.*\d)(?=.*[a-z]).*[A-Z])(?=.*[!@#$%^&]).{6,20}");
         }
-        public static void DangKy(List<User> user)
+        public static void Register(List<User> user)
         {
-            Console.WriteLine("hay dien thong tin dang ky!");
-            Console.Write("Ten dang nhap: ");
+            Console.Write("Tên đăng kí: ");
             string name = Console.ReadLine();
             while (Checkusername(name) == false)
             {
-                Console.WriteLine("Ten dang nhap khong hop le. Vui long chon ten khac ");
-                Console.WriteLine("Ten dang nhap ko duoc dung ky tu dac biet va khoang trang ");
-                Console.Write("Ten dang nhap: ");
+                Console.WriteLine("Tên đăng nhập không đúng!");
+                Console.Write("Đăng kí lại: ");
                 name = Console.ReadLine();
             }
             while (IsNameExist(user, name))
             {
-                Console.WriteLine("Ten dang nhap da ton tai. Vui long chon ten khac ");
-                Console.Write("Ten dang nhap: ");
+                Console.WriteLine("Tên đăng kí đã có người đăng kí");
+                Console.Write("Đăng kí lại: ");
                 name = Console.ReadLine();
             }
 
-            Console.WriteLine("Hay nhap mat khau tren 6 ky tu.Bao gom chu Hoa, thuong, so va ky tu dac biet");
-            Console.Write("Mat khau: ");
+            Console.Write("Mật khẩu: ");
             string matkhau = Console.ReadLine();
             while (CheckPassword(matkhau) == false)
             {
-                Console.WriteLine("Mat khau chua hop le. Vui long nhap lai mat khau");
-                Console.WriteLine("Hay nhap mat khau tren 6 ky tu.Bao gom chu Hoa, thuong, so va ky tu dac biet");
-                Console.Write("Mat khau: ");
+                Console.WriteLine("Mật khẩu không hợp lệ!");
+                Console.Write("Mật khẩu: ");
                 matkhau = Console.ReadLine();
             }
-            Console.Write("Nhap lai mat khau: ");
+            Console.Write("Nhập mật khẩu lại: ");
             string reMatkhau = Console.ReadLine();
             while (matkhau != reMatkhau)
             {
-                Console.WriteLine("Mat khau khong trung khop!");
-                Console.Write("Vui long nhap lai mat khau: ");
+                Console.WriteLine("Mật khẩu không khớp!");
+                Console.Write("Nhập lại mật khẩu: ");
                 reMatkhau = Console.ReadLine();
             }
             User user1 = new User();
@@ -94,7 +89,7 @@ namespace Cafe_Management_System
             }
             return false;
         }
-        public static bool IsMkExist(List<User> user, string matkhau)
+        public static bool IspasswordExist(List<User> user, string matkhau)
         {
             foreach (var item in user)
             {
@@ -116,45 +111,46 @@ namespace Cafe_Management_System
             }
             return false;
         }
-        public static bool DangNhap(List<User> user)
+
+        public static bool Login(List<User> user)
         {
-            bool IsDangnhap = false;
+            bool Islogin = false;
             bool check = false;
             if (IsExistvalue(user))
             {
                 do
                 {
-                    Console.Write("Nhap ten dang nhap:");
+                    Console.Write("Nhập tên đăng nhập: ");
                     string name = Console.ReadLine();
-                    Console.Write("Nhap mat khau:");
-                    string mk = Console.ReadLine();
+                    Console.Write("Nhập mật khẩu: ");
+                    string password = Console.ReadLine();
                     bool isNameExist = IsNameExist(user, name);
-                    bool isMkExist = IsMkExist(user, mk);
+                    bool ispasswordExist = IspasswordExist(user, password);
                     if (isNameExist)
                     {
-                        if (isMkExist)
+                        if (ispasswordExist)
                         {
-                            Console.WriteLine("Dang nhap thanh cong");
-                            IsDangnhap = true;
+                            Console.WriteLine("Đăng phập thành công");
+                            Islogin = true;
                             check = true;
                         }
                         else
                         {
-                            Console.WriteLine("Sai mat khau!! Vui long dang nhap lai:");
+                            Console.WriteLine("Sai mật khẩu");
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Ten dang nhap khong ton tai!! Vui long dang nhap lai");
+                        Console.WriteLine("Tên đăng phập sai");
                     }
                 }
                 while (check == false);
             }
             else
             {
-                Console.WriteLine("Chua co thanh vien!!!");
+                Console.WriteLine("chưa có ai đăng phập");
             }
-            return IsDangnhap;
+            return Islogin;
         }
     }
 }
