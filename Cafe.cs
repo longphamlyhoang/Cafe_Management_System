@@ -79,8 +79,6 @@ namespace Cafe_Management_System
                             int numberdish = Int32.Parse(Console.ReadLine());
 
                             bool check = false;
-
-                            // check ton tai id table
                             foreach (var order in listOrder)
                             {
                                 if (idTable == order.IdTable)
@@ -105,7 +103,9 @@ namespace Cafe_Management_System
                         }
                     case 3:
                         {
-                            helper.PrintBuild();
+                            Console.WriteLine("Nhập id bàn: ");
+                            int idTable = Int32.Parse(Console.ReadLine());
+                            helper.PrintBuild(idTable);
                             break;
                         }
                     case 4:

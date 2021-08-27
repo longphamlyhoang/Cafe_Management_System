@@ -37,7 +37,7 @@ namespace Cafe_Management_System
         }
         public static bool CheckPassword(string password)
         {
-            return Regex.IsMatch(password, @"((?=.*\d)(?=.*[a-z]).*[A-Z])(?=.*[!@#$%^&]).{6,20}");
+            return Regex.IsMatch(password, @"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$");
         }
         public static void Register(List<User> user)
         {
@@ -89,11 +89,11 @@ namespace Cafe_Management_System
             }
             return false;
         }
-        public static bool IspasswordExist(List<User> user, string matkhau)
+        public static bool IspasswordExist(List<User> user, string password)
         {
             foreach (var item in user)
             {
-                if (item.matKhau.Contains(matkhau))
+                if (item.matKhau.Contains(password))
                 {
                     return true;
                 }

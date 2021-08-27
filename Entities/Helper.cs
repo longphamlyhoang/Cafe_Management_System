@@ -44,7 +44,6 @@ namespace Cafe_Management_System.Ultilities
         public Order AddOrder(int idTable, string namedish, int numberdish)
         {
             List<Dish> listDistOrder = new List<Dish>();
-            // Lay gia tien tu mon an
             double price = 0;
             foreach (var dish in ListDish)
             {
@@ -103,14 +102,18 @@ namespace Cafe_Management_System.Ultilities
             return order;
         }
 
-        public void PrintBuild()
+        public void PrintBuild( int Idtable)
         {
             List<Table> listTable = ListTable;
             foreach (var table in listTable)
             {
-                table.ViewInfo();
+                if (Idtable == table.id)
+                {
+                    table.ViewInfo();
+                    Order.Sum();
+                }
             }
-
+            Console.WriteLine($"price: {Order.Sum()}");
         }
 
         public void Print(List<Order> listOrder)
@@ -127,6 +130,7 @@ namespace Cafe_Management_System.Ultilities
                     }
                 }
             }
+
             ResponseTable responseTable = new ResponseTable();
             responseTable.listTable = listTable;
 
